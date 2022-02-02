@@ -52,7 +52,7 @@ class GroceryBud {
     const clear = document.querySelector('.clear span');
 
     clear.addEventListener('click', () => {
-      // Debug
+      // Debug : Still Working
       this.storage.clear();
       this.printBasket();
     });
