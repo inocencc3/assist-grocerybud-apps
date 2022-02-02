@@ -1,0 +1,205 @@
+:root {
+    /* dark shades of primary color*/
+    --clr-primary-1: hsl(205, 86%, 17%);
+    --clr-primary-2: hsl(205, 77%, 27%);
+    --clr-primary-3: hsl(205, 72%, 37%);
+    --clr-primary-4: hsl(205, 63%, 48%);
+    /* primary/main color */
+    --clr-primary-5: #49a6e9;
+    /* lighter shades of primary color */
+    --clr-primary-6: hsl(205, 89%, 70%);
+    --clr-primary-7: hsl(205, 90%, 76%);
+    --clr-primary-8: hsl(205, 86%, 81%);
+    --clr-primary-9: hsl(205, 90%, 88%);
+    --clr-primary-10: hsl(205, 100%, 96%);
+    /* darkest grey - used for headings */
+    --clr-grey-1: hsl(209, 61%, 16%);
+    --clr-grey-2: hsl(211, 39%, 23%);
+    --clr-grey-3: hsl(209, 34%, 30%);
+    --clr-grey-4: hsl(209, 28%, 39%);
+    /* grey used for paragraphs */
+    --clr-grey-5: hsl(210, 22%, 49%);
+    --clr-grey-6: hsl(209, 23%, 60%);
+    --clr-grey-7: hsl(211, 27%, 70%);
+    --clr-grey-8: hsl(210, 31%, 80%);
+    --clr-grey-9: hsl(212, 33%, 89%);
+    --clr-grey-10: hsl(210, 36%, 96%);
+    --clr-white: #fff;
+    --clr-red-dark: hsl(360, 67%, 44%);
+    --clr-red-light: hsl(360, 71%, 66%);
+    --clr-green-dark: hsl(125, 67%, 44%);
+    --clr-green-light: hsl(125, 71%, 66%);
+    --clr-black: #222;
+    --border-rad: .5rem;
+    --box-shadow: .2rem .2rem 1rem var(--clr-grey-8);
+    --box-shadow-active: .2rem .2rem 1rem var(--clr-grey-6);
+    --letter-spacing: .3rem;
+    --transition: .5s;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color:var(--clr-grey-10);
+}
+
+.wrapper{
+    background-color: var(--clr-white);
+    width: 90vw;
+    max-width: 600px;
+    margin: 8rem auto;
+    border-radius: var(--border-rad);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.wrapper:hover{
+    box-shadow: var(--box-shadow-active);
+    transition: var(--transition);
+}
+
+.wrapper h1{
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    text-align: center;
+    padding-top: 2rem;
+    letter-spacing:var(--letter-spacing);
+}
+
+.search-panel{
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-panel input{
+    background-color: var(--clr-grey-10);
+    width: 100%;
+    padding: .3rem 1rem;
+    border-radius: .5rem 0 0 .5rem;
+    color: var(--clr-grey-5);
+    border: none;
+    font-size: 14px;
+}
+
+.search-panel button{
+    background-color: var(--clr-primary-8);
+    border-radius: 0 .5rem .5rem 0;
+    padding: 0 .5rem;
+    font-size: 14px;
+    border-style: none;
+    text-transform: capitalize;
+    letter-spacing: .1rem;
+    transition: var(--transition);
+}
+
+.search-panel span{
+    border-style: none;
+}
+
+.search-panel button:hover{
+    cursor: pointer;
+    color: var(--clr-white);
+    background-color: var(--clr-primary-5);
+    transition: var(--transition);
+}
+
+.listed-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+}
+
+.listed{
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: space-between;
+    padding: .2rem 1rem;
+    margin-bottom: .8rem;
+    transition: var(--transition);
+}
+
+.listed:hover{
+    background-color: var(--clr-grey-10);
+    border-radius: var(--border-rad);
+    transition: var(--transition);
+}
+
+.listed p{
+    display: block;
+    font-size: 14px;
+    letter-spacing: .2rem;
+}
+
+.edit{
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 .2rem;
+    color: var(--clr-green-light);
+    transition: var(--transition);
+}
+
+.edit:hover{
+    color: var(--clr-green-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.delete{
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 .2rem;
+    color: var(--clr-red-light);
+    transition: var(--transition);
+}
+
+.delete:hover{
+    color: var(--clr-red-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.clear-wrapper{
+    margin-top: 1rem;
+}
+
+.invisible{
+    display: none;;
+}
+
+.clear-wrapper button{
+    display: block;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    font-size: 15px;
+    text-transform: capitalize;
+    letter-spacing: .2rem;
+    color: var(--clr-red-light);
+    text-align: center;
+    border-style: none;
+    background-color: var(--clr-white);
+    transition: var(--transition);
+}
+
+.clear-wrapper button :hover{
+    color: var(--clr-red-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+@media screen and (min-width:840px){
+    .wrapper h1{
+        font-size: 24px;
+        font-weight: 900;
+    }
+}
