@@ -58,7 +58,7 @@ class GroceryBud {
     });
   };
 
-  deleteItem = (index) => {
+  deleteItem = () => {
     const delIcons = document.querySelectorAll('.delete');
 
     delIcons.forEach((val) => {
