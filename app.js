@@ -3,13 +3,13 @@ const groceryArr = [
   { name: 'egg', class: 'diary' },
   { name: 'carrot', class: 'vegetable' },
 ];
-
 class GroceryBud {
   constructor(array, storage) {
     this.groceries = array;
     this.storage = storage;
   }
 
+  // Initiate Function
   initWebapps() {
     window.addEventListener('DOMContentLoaded', (e) => {
       e.preventDefault();
@@ -19,9 +19,9 @@ class GroceryBud {
     });
   }
 
-  sendLocalAPI = (array) => {
-    const toString = JSON.stringify(array);
-    this.storage.setItem('object', toString);
+  sendLocalAPI = (index,value) => {
+    const toString = JSON.stringify(value);
+    this.storage.setItem(index, toString);
   };
 
   retrieveLocalAPI = (index) => {
@@ -31,22 +31,31 @@ class GroceryBud {
   };
 
   addGrocery = () => {
-    const inputText = document.getElementById('grocery-input');
     const addButton = document.querySelector('.submitItem');
-    const groceries = this.retrieveLocalAPI('object');
 
+    // addButton Function
     addButton.addEventListener('click', () => {
-      const preparePush = {
-        name: inputText.value,
-        class: 'dummy',
-      };
+      const dateConstructor = new Date();
+      const id = dateConstructor.getTime();
+      const inputText = document.getElementById('grocery-input').value;
 
-      groceries.push(preparePush);
-      this.sendLocalAPI(groceries);
+      // If doesnt have value do nothing
+      // if have execute Input data id and input text to localstorage
+      if(inputText){
+        this.storage.setItem(id,inputText);
+      }else{
+        console.log('No Item in input text');
+      }
 
-      // Debug Log : (Done For Now)
+      // After add item, back textinput value to none
+      this.defaultWindow();
+      console.log(inputText);
     });
   };
+
+  static defaultWindow = () => {
+    document.getElementById('grocery-input').value = '';
+  }
 
   clearBasket = () => {
     const clear = document.querySelector('.clear span');
