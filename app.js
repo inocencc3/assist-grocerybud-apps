@@ -1,8 +1,5 @@
 const { localStorage } = window;
-const groceryArr = [
-  { name: 'egg', class: 'diary' },
-  { name: 'carrot', class: 'vegetable' },
-];
+const groceryArr = [];
 class GroceryBud {
   constructor(array, storage) {
     this.groceries = array;
@@ -22,12 +19,14 @@ class GroceryBud {
   sendLocalAPI = (index,value) => {
     const toString = JSON.stringify(value);
     this.storage.setItem(index, toString);
+    // Still not used
   };
 
   retrieveLocalAPI = (index) => {
     const getItem = this.storage.getItem(index);
     const toObject = JSON.parse(getItem);
     return toObject;
+    // Still not used
   };
 
   addGrocery = () => {
@@ -40,31 +39,29 @@ class GroceryBud {
       const inputText = document.getElementById('grocery-input').value;
 
       // If doesnt have value do nothing
-      // if have execute Input data id and input text to localstorage
+      // if have execute Input data id and input text to array
       if(inputText){
-        this.storage.setItem(id,inputText);
+        this.groceries.push({id, value: inputText });
+        // After add item, back textinput value to none
+        this.defaultWindow();
+        this.printBasket();
+        console.log(this.groceries);
       }else{
         console.log('No Item in input text');
       }
-
-      // After add item, back textinput value to none
-      this.defaultWindow();
-      console.log(inputText);
     });
   };
 
-  static defaultWindow = () => {
+  defaultWindow = () => {
     document.getElementById('grocery-input').value = '';
   }
 
   clearBasket = () => {
-    const clear = document.querySelector('.clear span');
+    const clearButton = document.querySelector('.clear-wrapper');
 
-    clear.addEventListener('click', () => {
-      // Debug : Still Working
-      this.storage.clear();
-      this.printBasket();
-    });
+    clearButton.addEventListener('click',()=>{
+      console.log('clear list');
+    })
   };
 
   deleteItem = () => {
@@ -77,44 +74,47 @@ class GroceryBud {
     });
   };
 
-  toggleVisibilityClear = () => {
-    const clearClass = document.querySelector('.clear-wrapper').classList;
-
-    clearClass.add('invisible');
-    // Debug
-    if (this.storage.length >= 1) {
-      clearClass.remove('invisible');
-    }
-  };
-
   printBasket = () => {
     const listWrapper = document.querySelector('.listed-wrapper');
+    const clearWarpper = document.querySelector('.clear-wrapper');
 
     // Debug
-    const arrTemp2 = [];
-    for (let i = 1; i <= this.storage.length; i += 1) {
-      arrTemp2.push(this.storage.getItem(`item${i}`));
-    }
+    // If theres item inside array storage then execute print
+    
+    if(this.groceries.length > 0){
+      // Print
+      // Remove invisible wrapper
+      listWrapper.classList.remove('invisible');
 
-    const arrHTML = [];
-    arrTemp2.forEach((val) => {
-      arrHTML.push(`
-        <div class="listed">
-          <p>${val}</p>
+      const newElement = document.createElement('div');
+      const newAttClass = document.createAttribute('class');
+      const newAttData = document.createAttribute('data-id');
+      
+      // Print each item and make element inside listed wrapper
+      this.groceries.forEach((val)=>{
+        
+        newAttClass.value = 'listed';
+        newAttData.value = val.id;
+        newElement.setAttributeNode(newAttClass);
+        newElement.setAttributeNode(newAttData);
+
+        listWrapper.insertBefore(newElement, clearWarpper);
+        const htmlGenerate = `
+          <p>${val.value}</p>
           <div class="cpanel">
             <span class="edit"><i class="far fa-edit"></i></span>
             <span class="delete"
               ><i class="fa fa-trash" aria-hidden="true"></i
             ></span>
-          </div>
-        </div>
-        `);
-    });
-    const toHTML = arrHTML.join('');
-    listWrapper.innerHTML = toHTML;
+          </div>`;
+        newElement.innerHTML = htmlGenerate;
+      })
+    }
+
+    console.log(listWrapper);
 
     this.deleteItem();
-    this.toggleVisibilityClear();
+    // this.toggleVisibilityClear();
   };
 }
 
