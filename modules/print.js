@@ -35,14 +35,17 @@ export const printItem = (array) => {
 export const printItem2 = (array) => {
   // Check if array has value ( yes execute )/( no nothing )
   if(array.length > 0){
-    // Select wrapper to contain looped print code
+    // Select necessary element
     const wrapper = document.querySelector('.listed-wrapper');
+    const clearButton = document.querySelector('.clear-wrapper');
+    // Clear wrapper incase theres any element inside
+    wrapper.innerHTML = '';
     // Loop array
     const clearItem = document.querySelector('.clear-wrapper');
     let loopedHtmlScript = [];
     array.forEach((val) => {
       // Creating new element for each array value
-      const dataIdValue = 'placeholder'; // Waiting add modules
+      const dataIdValue = 'placeholder'; // WAITING ADD MODULES
       const newDiv = document.createElement('div');
       newDiv.setAttribute('class','listed');
       newDiv.setAttribute('data-id',dataIdValue);
@@ -56,14 +59,14 @@ export const printItem2 = (array) => {
           ></span>
         </div>
       `;
-      wrapper.insertBefore(newDiv, clearItem);
+      wrapper.appendChild(newDiv);
     })
     // Loop loopedHtmlScript to print on webview
     loopedHtmlScript.forEach((val) => {
       
     })
     // Unhide wrapper
-    wrapper.classList.remove('invisible');
+    clearButton.classList.remove('invisible');
   }else{
     // Return nothing
     return null;
