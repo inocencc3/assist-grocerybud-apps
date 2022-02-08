@@ -1,4 +1,5 @@
-import { printItem } from './modules/print-module.js';
+import { printItem } from './modules/print.js';
+import { printItem2 } from './modules/print.js';
 
 let groceries = [];
 groceries = [{
@@ -9,4 +10,5 @@ groceries = [{
   itemName: 'Orange'
 }];
 
-printItem(groceries);
+printItem2(groceries);
+printItem2(groceries);
