@@ -37,12 +37,14 @@ export const printItem2 = (array) => {
   if(array.length > 0){
     // Select wrapper to contain looped print code
     const wrapper = document.querySelector('.listed-wrapper');
+    // Clear wrapper incase theres any element inside
+    wrapper.innerHTML = '';
     // Loop array
     const clearItem = document.querySelector('.clear-wrapper');
     let loopedHtmlScript = [];
     array.forEach((val) => {
       // Creating new element for each array value
-      const dataIdValue = 'placeholder'; // Waiting add modules
+      const dataIdValue = 'placeholder'; // WAITING ADD MODULES
       const newDiv = document.createElement('div');
       newDiv.setAttribute('class','listed');
       newDiv.setAttribute('data-id',dataIdValue);
@@ -56,7 +58,7 @@ export const printItem2 = (array) => {
           ></span>
         </div>
       `;
-      wrapper.insertBefore(newDiv, clearItem);
+      wrapper.appendChild(newDiv);
     })
     // Loop loopedHtmlScript to print on webview
     loopedHtmlScript.forEach((val) => {

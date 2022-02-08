@@ -11,4 +11,3 @@ groceries = [{
 }];
 
 printItem2(groceries);
-printItem2(groceries);
