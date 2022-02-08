@@ -35,8 +35,9 @@ export const printItem = (array) => {
 export const printItem2 = (array) => {
   // Check if array has value ( yes execute )/( no nothing )
   if(array.length > 0){
-    // Select wrapper to contain looped print code
+    // Select necessary element
     const wrapper = document.querySelector('.listed-wrapper');
+    const clearButton = document.querySelector('.clear-wrapper');
     // Clear wrapper incase theres any element inside
     wrapper.innerHTML = '';
     // Loop array
@@ -65,7 +66,7 @@ export const printItem2 = (array) => {
       
     })
     // Unhide wrapper
-    wrapper.classList.remove('invisible');
+    clearButton.classList.remove('invisible');
   }else{
     // Return nothing
     return null;

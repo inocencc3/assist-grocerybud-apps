@@ -10,4 +10,6 @@ groceries = [{
   itemName: 'Orange'
 }];
 
+let blankArray = [];
+
 printItem2(groceries);
