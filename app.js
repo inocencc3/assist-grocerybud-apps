@@ -1,7 +1,7 @@
-import { printItem } from './modules/print.js';
-import { printItem2 } from './modules/print.js';
+import { printItem2 as renderBasket } from './modules/print.js';
+import { addBasket, editBasket } from './modules/add.js';
 
-let groceries = [];
+export let groceries = [];
 groceries = [{
   itemId: 1,
   itemName: 'Egg'
@@ -12,4 +12,6 @@ groceries = [{
 
 let blankArray = [];
 
-printItem2(groceries);
+renderBasket(groceries);
+
+

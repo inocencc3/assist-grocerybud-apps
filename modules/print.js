@@ -1,3 +1,5 @@
+import { addBasket } from "./add.js";
+
 export const printItem = (array) => {
   // Check if array has value ( yes execute )/( no nothing )
   if(array.length > 0){
@@ -45,7 +47,7 @@ export const printItem2 = (array) => {
     let loopedHtmlScript = [];
     array.forEach((val) => {
       // Creating new element for each array value
-      const dataIdValue = 'placeholder'; // WAITING ADD MODULES
+      const dataIdValue = val.itemId;
       const newDiv = document.createElement('div');
       newDiv.setAttribute('class','listed');
       newDiv.setAttribute('data-id',dataIdValue);
@@ -61,10 +63,8 @@ export const printItem2 = (array) => {
       `;
       wrapper.appendChild(newDiv);
     })
-    // Loop loopedHtmlScript to print on webview
-    loopedHtmlScript.forEach((val) => {
-      
-    })
+    // Init add/edit button function
+    addBasket(array);
     // Unhide wrapper
     clearButton.classList.remove('invisible');
   }else{
